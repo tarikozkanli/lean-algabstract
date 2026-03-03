@@ -1,7 +1,7 @@
 -- Field.lean
--- A field adds multiplicative inverses for non-zero elements to the CommutativeRing structure
+-- A field adds multiplicative inverses for non-zero elements to the IntegralDomain structure
 
-import Algabstract.CommutativeRing
+import Algabstract.IntegralDomain
 
 /- # Field
 
@@ -11,13 +11,15 @@ A field is a commutative ring in which every non-zero element has a multiplicati
 - A field (𝐹, +, ·) is a commutative ring where:
   - ∀ a ∈ 𝐹, a ≠ 0 → ∃ a⁻¹ ∈ 𝐹, a · a⁻¹ = 1 and a⁻¹ · a = 1
 
-**Properties inherited from CommutativeRing:**
+**Properties inherited from IntegralDomain:**
 1. (𝐹, +) is an abelian group
 2. (𝐹, ·) is a commutative monoid
 3. Distributivity of multiplication over addition
+4. No zero divisors
+5. Nontrivial (0 ≠ 1)
 
 **Additional field property:**
-4. Every non-zero element has a multiplicative inverse
+6. Every non-zero element has a multiplicative inverse
 
 **Examples:**
 - Rational numbers (ℚ)
@@ -27,14 +29,16 @@ A field is a commutative ring in which every non-zero element has a multiplicati
 
 **Hierarchy Summary:**
 - Single operation: Magma ⊂ Semigroup ⊂ Monoid ⊂ Group ⊂ AbelianGroup
-- Two operations: Semiring ⊂ Ring ⊂ CommutativeRing ⊂ Field
+- Two operations (non-commutative): Semiring ⊂ Ring ⊂ DivisionRing
+- Two operations (commutative): Semiring ⊂ Ring ⊂ CommutativeRing ⊂ IntegralDomain ⊂ EuclideanDomain
+- Field = DivisionRing + Commutativity = IntegralDomain + Inverses
+- This implementation: Field extends IntegralDomain structurally
 -/
 
-structure Field (α : Type) extends CommutativeRing α where
+structure Field (α : Type) extends IntegralDomain α where
   inv : α → α
   mul_inv : ∀ a : α, a ≠ zero → mul a (inv a) = one
   inv_mul : ∀ a : α, a ≠ zero → mul (inv a) a = one
-  zero_ne_one : zero ≠ one
 
 -- Uniform Unicode notation for multiplicative inverse
 prefix:100 "⁻¹" => Field.inv
@@ -104,8 +108,22 @@ def boolCommutativeRing : CommutativeRing Bool :=
     intro a b
     cases a <;> cases b <;> decide }
 
-def boolField : Field Bool :=
+def boolIntegralDomain : IntegralDomain Bool :=
 { toCommutativeRing := boolCommutativeRing,
+  no_zero_divisors := by
+    intro a b hab
+    cases a with
+    | false => left; rfl
+    | true =>
+      cases b with
+      | false => right; rfl
+      | true =>
+        -- true && true = true, not false
+        simp [boolCommutativeRing, boolRing, boolSemiring] at hab,
+  zero_ne_one := by decide }
+
+def boolField : Field Bool :=
+{ toIntegralDomain := boolIntegralDomain,
   inv := fun _ => true,
   mul_inv := by
     intro a h
@@ -116,8 +134,7 @@ def boolField : Field Bool :=
     intro a h
     cases a with
     | false => cases (h rfl)
-    | true => decide
-  zero_ne_one := by decide }
+    | true => decide }
 
 example : boolField.mul true (boolField.inv true) = boolField.one :=
   boolField.mul_inv true (by decide)

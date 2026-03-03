@@ -8,6 +8,9 @@ import Algabstract.Group
 import Algabstract.AbelianGroup
 import Algabstract.Semiring
 import Algabstract.Ring
+import Algabstract.DivisionRing
 import Algabstract.CommutativeRing
+import Algabstract.IntegralDomain
+import Algabstract.EuclideanDomain
 import Algabstract.Field
 import Algabstract.Field

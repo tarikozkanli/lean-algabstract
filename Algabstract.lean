@@ -9,3 +9,5 @@ import Algabstract.AbelianGroup
 import Algabstract.Semiring
 import Algabstract.Ring
 import Algabstract.CommutativeRing
+import Algabstract.Field
+import Algabstract.Field

@@ -1,0 +1,21 @@
+# Lean build outputs
+/.lake/
+/build/
+*.olean
+*.ilean
+*.c
+*.o
+
+# Lake manifest (can be regenerated)
+/lake-manifest.json
+
+# Editor/IDE files
+/.vscode/
+/.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db

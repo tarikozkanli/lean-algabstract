@@ -9,6 +9,10 @@
 # Lake manifest (can be regenerated)
 /lake-manifest.json
 
+# Local tooling
+/.tool/
+/.tools/
+
 # Editor/IDE files
 /.vscode/
 /.idea/

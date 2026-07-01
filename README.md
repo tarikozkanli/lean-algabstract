@@ -32,7 +32,7 @@ A Lean 4 library package for algebraic abstractions.
 - `Algabstract.lean` — root export module
 - `Algabstract/` — library modules
 - `lakefile.lean` — Lake package configuration
-- `lean-toolchain` — pinned Lean version
+- `lean-toolchain` — Lean toolchain version
 
 ## Project metadata
 

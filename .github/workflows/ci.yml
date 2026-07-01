@@ -23,4 +23,4 @@ jobs:
           lake --version
 
       - name: Build
-        run: lake build
+        run: lake update mathlib && lake build

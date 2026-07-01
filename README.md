@@ -13,8 +13,19 @@ A Lean 4 library package for algebraic abstractions.
 - Two operation hierarchy:
   - `Semiring`
   - `Ring`
+  - `DivisionRing`
   - `CommutativeRing`
+  - `IntegralDomain`
+  - `EuclideanDomain`
   - `Field`
+
+- Commutative algebra objects:
+  - `Ideal`
+
+- Mathlib-backed modules:
+  - `NoetherianRing`
+  - `PolynomialRing`
+  - `HilbertBasisTheorem`
 
 ## Project layout
 

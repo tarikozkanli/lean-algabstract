@@ -1,0 +1,29 @@
+✖ [8573/8576] Building Algabstract.PolynomialRing (18s)
+trace: .> LEAN_PATH=C:\workspaces\lean-algabstract\.lake\packages\Cli\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\batteries\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\Qq\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\aesop\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\importGraph\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\plausible\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\packages\mathlib\.lake\build\lib\lean;C:\workspaces\lean-algabstract\.lake\build\lib\lean c:\Users\tozkanli\.elan\toolchains\leanprover--lean4---v4.31.0\bin\lean.exe C:\workspaces\lean-algabstract\Algabstract\PolynomialRing.lean -o C:\workspaces\lean-algabstract\.lake\build\lib\lean\Algabstract\PolynomialRing.olean -i C:\workspaces\lean-algabstract\.lake\build\lib\lean\Algabstract\PolynomialRing.ilean -c C:\workspaces\lean-algabstract\.lake\build\ir\Algabstract\PolynomialRing.c --setup C:\workspaces\lean-algabstract\.lake\build\ir\Algabstract\PolynomialRing.setup.json --json
+error: Algabstract/PolynomialRing.lean:9:37: failed to synthesize instance of type class
+  Semiring R
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Algabstract/PolynomialRing.lean:16:23: Type mismatch
+  Polynomial.X
+has type
+  Polynomial ?m.7
+but is expected to have type
+  PolynomialRing R
+error: Algabstract/PolynomialRing.lean:17:85: Unknown identifier `R`
+error: Algabstract/PolynomialRing.lean:20:22: Type mismatch
+  Polynomial.X
+has type
+  Polynomial ?m.7
+but is expected to have type
+  PolynomialRing R
+error: Algabstract/PolynomialRing.lean:21:84: Unknown identifier `R`
+error: Algabstract/PolynomialRing.lean:30:36: failed to synthesize instance of type class
+  Semiring (PolynomialRing R)
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: Algabstract/PolynomialRing.lean:31:32: Unknown identifier `isNoetherianRing_polynomial`
+error: Lean exited with code 1
+Some required targets logged failures:
+- Algabstract.PolynomialRing
+error: build failed
